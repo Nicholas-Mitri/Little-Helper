@@ -4,28 +4,28 @@
         "name": "file_modifications",
         "strict": true,
         "schema": {
-        "type": "object",
-        "properties": {
-            "file_paths": {
-            "type": "array",
-            "description": "A list of paths to the files that have been modified.",
-            "items": {
-                "type": "string"
-            }
+            "type": "object",
+            "properties": {
+                "file_paths": {
+                    "type": "array",
+                    "description": "A list of paths to the files that have been modified.",
+                    "items": {
+                        "type": "string"
+                        }
+                    },
+                "modified_contents": {
+                    "type": "array",
+                    "description": "Contents of the files after modifications.",
+                    "items": {
+                        "type": "string"
+                        }
+                }
             },
-            "modified_contents": {
-            "type": "array",
-            "description": "Contents of the files after modifications.",
-            "items": {
-                "type": "string"
-            }
-            }
-        },
-        "required": [
-            "file_paths",
-            "modified_contents"
-        ],
-        "additionalProperties": false
+            "required": [
+                "file_paths",
+                "modified_contents"
+            ],
+            "additionalProperties": false
         }
 
     }
