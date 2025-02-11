@@ -50,7 +50,15 @@ def transcribe_audio(audio_file_path):
 
 
 def read_sys_prompt(filename):
-    # Load system prompt from file
+    """
+    Read and return the system prompt from a text file.
+
+    Parameters:
+    filename (str): Path to the file containing the system prompt.
+
+    Returns:
+    str: The system prompt text if successful, error message if failed.
+    """
     try:
         with open(filename, "r") as f:
             system_prompt = f.read().strip()
@@ -62,9 +70,15 @@ def read_sys_prompt(filename):
 
 
 def read_response_format(filename):
-    # Load response format from JSON file
+    """
+    Read and parse the response format from a JSON file.
 
-    # Load system prompt from file
+    Parameters:
+    filename (str): Path to the JSON file containing response format.
+
+    Returns:
+    dict: The parsed response format if successful, error message if failed.
+    """
     try:
         with open(filename, "r") as f:
             response_format = json.loads(f.read())
@@ -76,15 +90,16 @@ def read_response_format(filename):
 
 
 if __name__ == "__main__":
-
-    # Load system prompt from file
+    # Load system prompt from configuration file
     system_prompt = read_sys_prompt("system_prompt.txt")
 
+    # Example user prompt for testing
     user_prompt = "add hello world code to file with path /usr/hajj/main.py. import numpy in file with path /usr/hajj2/main.py and calculate the mean of an array"
 
+    # Load response format configuration
     response_format = read_response_format("response_format.json")
 
-    # Get the response from the model
+    # Get and time the response from the model
     time_start = time.perf_counter()
     response_text = send_system_and_user_prompts(
         system_prompt, user_prompt, response_format
